@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <UsingTask TaskName="ReportPortal.Extensions.FlowBack.Task.FlowBackTask" AssemblyFile="..\..\tasks\ReportPortal.Extensions.FlowBack.Task.dll"/>
-  
+
   <Target Name="FlowBack" AfterTargets="Build">
-    <FlowBackTask />
+    <FlowBackTask TargetAssemblyPath="$(TargetPath)" />
   </Target>
 
 </Project>
