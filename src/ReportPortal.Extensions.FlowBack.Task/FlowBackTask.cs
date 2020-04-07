@@ -11,7 +11,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
             
             this.Log.LogError("I'm executed.");
 
-            throw new Exception("hmmmm");
+            //throw new Exception("hmmmm");
 
             return true;
         }

@@ -13,7 +13,6 @@
     <RepositoryType>GitHub</RepositoryType>
     <RepositoryUrl>https://github.com/nvborisenko/reportportal-extensions-flowback</RepositoryUrl>
     <PackageTags>report reportportal testing source</PackageTags>
-
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,9 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ReportPortal.Shared" Version="3.0.0-alpha.55" />
+    <PackageReference Include="ReportPortal.Shared" Version="3.0.0-alpha.55"/>
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReportPortal.Extensions.FlowBack.Task\ReportPortal.Extensions.FlowBack.Task.csproj" PrivateAssets="All"/>
+  </ItemGroup>
+
   <Target Name="CopyFlowBackOutputTask" AfterTargets="Build">
     <ItemGroup>
       <None Include="..\ReportPortal.Extensions.FlowBack.Task\$(OutputPath)" Pack="true" PackagePath="tasks\" />
