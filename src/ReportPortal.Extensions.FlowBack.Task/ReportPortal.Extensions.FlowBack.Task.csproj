@@ -3,21 +3,49 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>1.0.0</Version>
-    <IsPackable>false</IsPackable>
+
+    <PackageId>ReportPortal.Extensions.FlowBack</PackageId>
+    <Description></Description>
+    <Authors>Nikolay Borisenko</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>http://reportportal.io</PackageProjectUrl>
+    <PackageIcon>Logo.png</PackageIcon>
+    <RepositoryType>GitHub</RepositoryType>
+    <RepositoryUrl>https://github.com/nvborisenko/reportportal-extensions-flowback</RepositoryUrl>
+    <PackageTags>report reportportal testing source</PackageTags>
 
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    
-    <!--
-    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-    -->
+
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+
+    <!--<SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>-->
+
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.5.0" />
-    <PackageReference Include="Mono.Cecil" Version="0.11.2" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.5.0" PrivateAssets="All" />
+    <PackageReference Include="Mono.Cecil" Version="0.11.2" PrivateAssets="All" />
     <PackageReference Include="ReportPortal.Shared" Version="3.0.0-alpha.55" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Build\**\*.targets" Pack="true" PackagePath="build\" />
+
+    <None Include="..\..\Logo.png" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReportPortal.Extensions.FlowBack\ReportPortal.Extensions.FlowBack.csproj" PrivateAssets="All" />
+  </ItemGroup>
+
+  <Target Name="CopyFlowBackOutputTask" AfterTargets="Build">
+    <ItemGroup>
+      <None Include="$(OutputPath)ReportPortal.Extensions.FlowBack.Core.dll" Pack="true" PackagePath="lib\netstandard2.0\" />
+
+
+      <None Include="$(OutputPath)" Pack="true" PackagePath="tasks\" />
+    </ItemGroup>
+  </Target>
 
 
 </Project>

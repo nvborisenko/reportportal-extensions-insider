@@ -8,13 +8,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
     {
         public override bool Execute()
         {
-            this.Log.LogWarning(TargetAssemblyPath);
-
-            this.Log.LogError("I'm executed!");
-
-            //throw new Exception("hmmmm");
-
-            var inst = new AssemblyInstrumentator(TargetAssemblyPath);
+            var inst = new AssemblyInstrumentator(TargetAssemblyPath, this.Log);
             inst.Instrument();
 
             return true;

@@ -3,36 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>1.0.0</Version>
-
-    <PackageId>ReportPortal.Extensions.FlowBack</PackageId>
-    <Description></Description>
-    <Authors>Nikolay Borisenko</Authors>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>http://reportportal.io</PackageProjectUrl>
-    <PackageIcon>Logo.png</PackageIcon>
-    <RepositoryType>GitHub</RepositoryType>
-    <RepositoryUrl>https://github.com/nvborisenko/reportportal-extensions-flowback</RepositoryUrl>
-    <PackageTags>report reportportal testing source</PackageTags>
+    <AssemblyName>ReportPortal.Extensions.FlowBack.Core</AssemblyName>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="Build\**\*.targets" Pack="true" PackagePath="build\" />
-
-    <None Include="..\..\Logo.png" Pack="true" PackagePath="\" Visible="false" />
-  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ReportPortal.Shared" Version="3.0.0-alpha.55"/>
+    <PackageReference Include="ReportPortal.Shared" Version="3.0.0-alpha.55" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ReportPortal.Extensions.FlowBack.Task\ReportPortal.Extensions.FlowBack.Task.csproj" PrivateAssets="All"/>
-  </ItemGroup>
-
-  <Target Name="CopyFlowBackOutputTask" AfterTargets="Build">
-    <ItemGroup>
-      <None Include="..\ReportPortal.Extensions.FlowBack.Task\$(OutputPath)" Pack="true" PackagePath="tasks\" />
-    </ItemGroup>
-  </Target>
+  
 
 </Project>
