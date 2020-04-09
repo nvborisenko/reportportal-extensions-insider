@@ -7,7 +7,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
 {
     class InternalClass
     {
-        public void SyncMethod()
+        public string SyncMethod()
         {
             Interception.IInterceptor rp_intercepter = new Interception.MethodInterceptor();
 
@@ -16,7 +16,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
             try
             {
                 // user's code
-                Console.WriteLine("asd");
+                return "asd";
             }
             catch (Exception exp)
             {
@@ -28,6 +28,13 @@ namespace ReportPortal.Extensions.FlowBack.Task
             {
                 rp_intercepter.OnAfter();
             }
+
+            throw new Exception("exp");
+        }
+
+        public void ThrowingError()
+        {
+            throw new Exception("exp");
         }
     }
 }

@@ -40,7 +40,7 @@
 
   <Target Name="CopyFlowBackOutputTask" AfterTargets="Build">
     <ItemGroup>
-      <None Include="$(OutputPath)ReportPortal.Extensions.FlowBack.Core.dll" Pack="true" PackagePath="lib\netstandard2.0\" />
+      <None Include="$(OutputPath)ReportPortal.Extensions.FlowBack.Core.dll" Pack="true" PackagePath="lib\netstandard2.0" />
 
 
       <None Include="$(OutputPath)" Pack="true" PackagePath="tasks\" />

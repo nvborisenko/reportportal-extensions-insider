@@ -9,27 +9,22 @@ namespace ReportPortal.Extensions.FlowBack.Interception
     {
         public MethodInterceptor()
         {
-            Console.WriteLine("Hi from ctor");
-        }
-
-        public static void Execute(string a)
-        {
-            Console.WriteLine($"Hi new version from interceptor: {a}");
+            Console.WriteLine("Hi from .ctor");
         }
 
         public void OnBefore()
         {
-            Console.WriteLine("Hi from OnBefore");
+            Console.WriteLine("Hi from .OnBefore");
         }
 
         public void OnException(Exception exp)
         {
-
+            Console.WriteLine("Hi from .OnException: " + exp.Message);
         }
 
         public void OnAfter()
         {
-
+            Console.WriteLine("Hi from .OnAfter");
         }
     }
 }
