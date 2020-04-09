@@ -37,7 +37,14 @@ namespace ReportPortal.Extensions.FlowBack.Task
                             {
                                 var processor = method.Body.GetILProcessor();
 
-                                var lastRet = method.Body.Instructions.Last();
+                                var lastRet = method.Body.Instructions.LastOrDefault(i => i.OpCode == OpCodes.Ret);
+
+                                if (lastRet == null)
+                                {
+                                    lastRet = processor.Create(OpCodes.Ret);
+
+                                    processor.Append(lastRet);
+                                }
 
 
                                 var i_interceptor_type = module.ImportReference(typeof(Interception.IInterceptor));
@@ -123,7 +130,6 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                 method.Body.ExceptionHandlers.Add(finallyhandler);
 
                                 //method.Body.OptimizeMacros();
-
                             }
                         }
                     }
