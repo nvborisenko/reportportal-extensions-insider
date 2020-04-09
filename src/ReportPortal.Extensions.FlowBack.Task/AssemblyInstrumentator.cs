@@ -32,12 +32,8 @@ namespace ReportPortal.Extensions.FlowBack.Task
                     {
                         if (method.HasCustomAttributes)
                         {
-
                             if (method.CustomAttributes.Any(ca => ca.AttributeType.FullName == typeof(FlowBackAttribute).FullName))
                             {
-
-                                _logger.LogWarning($"{method.Name} has attribute in {_assemblyPath}");
-
                                 var processor = method.Body.GetILProcessor();
 
                                 var i_interceptor_type = module.ImportReference(typeof(Interception.IInterceptor));
@@ -48,10 +44,10 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                 var varDef = new VariableDefinition(i_interceptor_type);
                                 processor.Body.Variables.Add(varDef);
 
-                                // new interceptor
-                                var newobj = processor.Create(OpCodes.Newobj, method.Module.ImportReference(typeof(Interception.MethodInterceptor).GetConstructor(new Type[] { })));
-                                instructions.Add(newobj);
+                                // Interception.IInterceptor rp_intercepter = new Interception.MethodInterceptor();
+                                instructions.Add(processor.Create(OpCodes.Newobj, method.Module.ImportReference(typeof(Interception.MethodInterceptor).GetConstructor(new Type[] { }))));
                                 instructions.Add(processor.Create(OpCodes.Stloc, varDef));
+                                // rp_intercepter.OnBefore();
                                 instructions.Add(processor.Create(OpCodes.Ldloc, varDef));
                                 instructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(Interception.IInterceptor).GetMethod("OnBefore"))));
 
@@ -71,7 +67,6 @@ namespace ReportPortal.Extensions.FlowBack.Task
                         }
                     }
                 }
-
 
                 module.Write(new WriterParameters { WriteSymbols = true });
             }

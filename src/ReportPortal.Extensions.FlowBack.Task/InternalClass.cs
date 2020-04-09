@@ -9,9 +9,9 @@ namespace ReportPortal.Extensions.FlowBack.Task
     {
         public void SyncMethod()
         {
-            Interception.IInterceptor __rp_inter = new Interception.MethodInterceptor();
+            Interception.IInterceptor rp_intercepter = new Interception.MethodInterceptor();
 
-            __rp_inter.OnBefore();
+            rp_intercepter.OnBefore();
 
             try
             {
@@ -20,13 +20,13 @@ namespace ReportPortal.Extensions.FlowBack.Task
             }
             catch (Exception exp)
             {
-                __rp_inter.OnException(exp);
+                rp_intercepter.OnException(exp);
 
                 throw;
             }
             finally
             {
-                __rp_inter.OnAfter();
+                rp_intercepter.OnAfter();
             }
         }
     }
