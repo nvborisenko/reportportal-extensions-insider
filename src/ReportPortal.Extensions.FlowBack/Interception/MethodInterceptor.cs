@@ -4,7 +4,6 @@ using System.Text;
 
 namespace ReportPortal.Extensions.FlowBack.Interception
 {
-
     public class MethodInterceptor : IInterceptor
     {
         public MethodInterceptor()

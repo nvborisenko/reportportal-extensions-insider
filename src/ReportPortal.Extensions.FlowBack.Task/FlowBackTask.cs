@@ -8,7 +8,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
     {
         public override bool Execute()
         {
-            var inst = new AssemblyInstrumentator(TargetAssemblyPath, this.Log);
+            var inst = new AssemblyInstrumentator(TargetAssemblyPath);
             inst.Instrument();
 
             return true;

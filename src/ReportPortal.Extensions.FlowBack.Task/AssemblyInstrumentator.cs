@@ -9,21 +9,21 @@ using System.Text;
 
 namespace ReportPortal.Extensions.FlowBack.Task
 {
-    class AssemblyInstrumentator
+    public class AssemblyInstrumentator
     {
         private string _assemblyPath;
 
-        private TaskLoggingHelper _logger;
+        //private TaskLoggingHelper _logger;
 
-        public AssemblyInstrumentator(string assemblyPath, TaskLoggingHelper logger)
+        public AssemblyInstrumentator(string assemblyPath)
         {
             _assemblyPath = assemblyPath;
-            _logger = logger;
+            //_logger = logger;
         }
 
         public void Instrument()
         {
-            _logger.LogWarning($"Instrumenting: {_assemblyPath}");
+            //_logger.LogWarning($"Instrumenting: {_assemblyPath}");
 
             using (ModuleDefinition module = ModuleDefinition.ReadModule(_assemblyPath, new ReaderParameters { ReadWrite = true, ReadSymbols = true }))
             {
@@ -37,7 +37,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
                             {
                                 var processor = method.Body.GetILProcessor();
 
-                                var lastRet = method.Body.Instructions.LastOrDefault(i => i.OpCode == OpCodes.Ret);
+                                var lastRet = method.Body.Instructions.LastOrDefault(i => i.OpCode.FlowControl == FlowControl.Return);
 
                                 if (lastRet == null)
                                 {
@@ -46,6 +46,11 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                     processor.Append(lastRet);
                                 }
 
+                                var previousLdlocIntruction = GetPreviousLdloc(lastRet);
+                                if (previousLdlocIntruction != null)
+                                {
+                                    lastRet = previousLdlocIntruction;
+                                }
 
                                 var i_interceptor_type = module.ImportReference(typeof(Interception.IInterceptor));
 
@@ -81,10 +86,19 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                 handlerInstructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(Interception.IInterceptor).GetMethod("OnException"))));
                                 handlerInstructions.Add(processor.Create(OpCodes.Rethrow));
 
-                                var innerTryLeave = processor.Create(OpCodes.Leave_S, lastRet);
-                                //handlerInstructions.Add(innerTryLeave);
+                                Instruction innerTryLeave = null;
+                                if (//lastRet.Previous?.OpCode.Code == Code.Br_S
+                                    lastRet.Previous?.OpCode.FlowControl == FlowControl.Branch)
+                                //|| lastRet.Previous?.OpCode.FlowControl == FlowControl.Throw)
+                                {
+                                    innerTryLeave = lastRet.Previous;
+                                }
+                                if (innerTryLeave == null)
+                                {
+                                    innerTryLeave = processor.Create(OpCodes.Leave_S, lastRet);
+                                    processor.InsertBefore(lastRet, innerTryLeave);
+                                }
 
-                                processor.InsertBefore(lastRet, innerTryLeave);
 
                                 foreach (var instruction in handlerInstructions)
                                 {
@@ -129,13 +143,28 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                 method.Body.ExceptionHandlers.Add(catchHandler);
                                 method.Body.ExceptionHandlers.Add(finallyhandler);
 
-                                //method.Body.OptimizeMacros();
+                                method.Body.OptimizeMacros();
                             }
                         }
                     }
                 }
 
                 module.Write(new WriterParameters { WriteSymbols = true });
+            }
+        }
+
+        private Instruction GetPreviousLdloc(Instruction current)
+        {
+            if (current.Previous == null
+                || current.Previous.OpCode.Code == Code.Ldloc
+                || current.Previous.OpCode.Code == Code.Ldloc_0
+                || current.Previous.OpCode.Code == Code.Ldloc_1)
+            {
+                return current.Previous;
+            }
+            else
+            {
+                return GetPreviousLdloc(current.Previous);
             }
         }
     }
