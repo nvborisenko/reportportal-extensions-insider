@@ -6,10 +6,10 @@ namespace ReportPortal.Extensions.FlowBack.Interception
 {
     public interface IInterceptor
     {
-        void OnBefore();
+        void OnBefore(string name);
 
         void OnException(Exception exp);
 
-        void OnAfter();
+        void OnAfter(object result);
     }
 }
