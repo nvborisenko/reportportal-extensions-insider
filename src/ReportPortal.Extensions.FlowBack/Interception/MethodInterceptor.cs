@@ -31,11 +31,12 @@ namespace ReportPortal.Extensions.FlowBack.Interception
 
         public void OnAfter(object result)
         {
-            var message = $"Result: `{result == null: \"null\" ? result}`";
+            string ret = result == null ? "" : result.ToString();
+            var message = $"Result: `{ret}`";
             _scope.Trace(message);
 
             _scope.Dispose();
-            Console.WriteLine($"Hi from .OnAfter: Result: {result}");
+            Console.WriteLine($"Hi from .OnAfter: Message: {message}");
         }
     }
 }
