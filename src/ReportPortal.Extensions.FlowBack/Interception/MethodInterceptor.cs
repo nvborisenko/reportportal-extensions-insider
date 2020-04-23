@@ -31,7 +31,7 @@ namespace ReportPortal.Extensions.FlowBack.Interception
 
         public void OnAfter(object result)
         {
-            string ret = result == null ? "" : result.ToString();
+            string ret = result == null ? "null" : result.ToString();
             var message = $"Result: `{ret}`";
             _scope.Trace(message);
 
