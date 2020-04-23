@@ -81,6 +81,10 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                         }
                                     }
 
+                                    var isCompilerenerated = type.CustomAttributes.Any(a => a.AttributeType.FullName == typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute).FullName);
+                                    // skip it temporary
+                                    if (isCompilerenerated) isIgnored = true;
+
                                     if (!isIgnored)
                                     {
                                         var firstUserInstruction = processor.Body.Instructions.First();
