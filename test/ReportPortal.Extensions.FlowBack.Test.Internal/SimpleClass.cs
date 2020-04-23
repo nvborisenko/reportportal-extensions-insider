@@ -145,5 +145,11 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             catch (Exception)
             { }
         }
+
+        [FlowBack(Ignore = true)]
+        public void IggnoredMethof()
+        {
+
+        }
     }
 }
