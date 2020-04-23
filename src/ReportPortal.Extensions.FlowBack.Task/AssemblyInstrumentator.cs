@@ -50,7 +50,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                 var flowBackAttribute = method.CustomAttributes.FirstOrDefault(ca => ca.AttributeType.FullName == typeof(FlowBackAttribute).FullName);
 
                                 //if (flowBackAttribute != null)
-                                if (flowBackAttribute != null || true)
+                                if (!method.IsConstructor)
                                 {
                                     var processor = method.Body.GetILProcessor();
 
