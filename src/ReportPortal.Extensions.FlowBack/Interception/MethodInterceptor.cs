@@ -13,20 +13,20 @@ namespace ReportPortal.Extensions.FlowBack.Interception
         public MethodInterceptor()
         {
             _parentScope = Log.ActiveScope;
-            Console.WriteLine("Hi from .ctor");
+            Console.WriteLine($"Hi from .ctor: {_parentScope.Id}");
         }
 
         public void OnBefore(string name)
         {
             _scope = _parentScope.BeginNewScope(name);
 
-            Console.WriteLine("Hi from .OnBefore: " + name);
+            Console.WriteLine($"Hi from .OnBefore: {_scope.Id} " + name);
         }
 
         public void OnException(Exception exp)
         {
             _scope.Warn(exp.ToString());
-            Console.WriteLine("Hi from .OnException: " + exp.Message);
+            Console.WriteLine($"Hi from .OnException: {_scope.Id} " + exp.Message);
         }
 
         public void OnAfter(object result)
@@ -35,8 +35,9 @@ namespace ReportPortal.Extensions.FlowBack.Interception
             var message = $"Result: `{ret}`";
             _scope.Trace(message);
 
+            Console.WriteLine($"Hi from .OnAfter {_scope.Id}: Message: {message}");
+
             _scope.Dispose();
-            Console.WriteLine($"Hi from .OnAfter: Message: {message}");
         }
     }
 }
