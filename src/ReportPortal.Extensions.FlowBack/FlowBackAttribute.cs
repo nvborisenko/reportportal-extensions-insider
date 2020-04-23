@@ -15,5 +15,7 @@ namespace ReportPortal.Extensions.FlowBack
         }
 
         public string Name { get; set; }
+
+        public bool Ignore { get; set; }
     }
 }
