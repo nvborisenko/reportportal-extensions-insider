@@ -81,9 +81,9 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                         }
                                     }
 
-                                    var isCompilerGenerated = type.CustomAttributes.Any(a => a.AttributeType.FullName == typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute).FullName);
+                                    var isAsync = type.CustomAttributes.Any(a => a.AttributeType.FullName == typeof(System.Runtime.CompilerServices.AsyncStateMachineAttribute).FullName);
                                     // skip it temporary
-                                    if (isCompilerGenerated) isIgnored = true;
+                                    if (isAsync) isIgnored = true;
 
                                     if (!isIgnored)
                                     {

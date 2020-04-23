@@ -110,8 +110,12 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
 
         public async Task<int> SimpleSumAsyncMethod(int a, int b, Type type)
         {
-            await Task.Delay(0);
-            await Task.Delay(1);
+            await Task.Delay(1000);
+            await Task.Delay(2000);
+            using (var scope = Shared.Log.BeginNewScope("qwe"))
+            {
+
+            }
             return a + b;
         }
 
