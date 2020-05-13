@@ -112,7 +112,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
         {
             await Task.Delay(1000);
             await Task.Delay(2000);
-            using (var scope = Shared.Log.BeginNewScope("qwe"))
+            using (var scope = Shared.Log.BeginScope("qwe"))
             {
 
             }

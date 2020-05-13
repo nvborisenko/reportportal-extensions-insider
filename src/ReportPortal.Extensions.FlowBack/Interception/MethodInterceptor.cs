@@ -18,7 +18,7 @@ namespace ReportPortal.Extensions.FlowBack.Interception
 
         public void OnBefore(string name)
         {
-            _scope = _parentScope.BeginNewScope(name);
+            _scope = _parentScope.BeginScope(name);
 
             Console.WriteLine($"Hi from .OnBefore: {_scope.Id} " + name);
         }
