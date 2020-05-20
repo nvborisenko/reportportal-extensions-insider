@@ -44,13 +44,12 @@ namespace ReportPortal.Extensions.FlowBack.Task
                     {
                         foreach (var method in type.Methods)
                         {
-                            if (true)
-                            //if (method.HasCustomAttributes && method.HasBody)
+                            //if (true)
+                            if (method.HasCustomAttributes && method.HasBody)
                             {
                                 var flowBackAttribute = method.CustomAttributes.FirstOrDefault(ca => ca.AttributeType.FullName == typeof(FlowBackAttribute).FullName);
 
-                                //if (flowBackAttribute != null)
-                                if (true)
+                                if (flowBackAttribute != null)
                                 {
                                     var processor = method.Body.GetILProcessor();
 

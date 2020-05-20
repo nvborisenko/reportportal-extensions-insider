@@ -7,6 +7,7 @@ using System.Text;
 
 namespace ReportPortal.Extensions.FlowBack.Test.Internal.Logging
 {
+    [FlowBack(Ignore = true)]
     class LogHandler : ILogHandler
     {
         [FlowBack(Ignore = true)]
@@ -15,6 +16,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal.Logging
 
         }
 
+        [FlowBack(Ignore = true)]
         public int Order => 1;
 
         [FlowBack(Ignore = true)]
