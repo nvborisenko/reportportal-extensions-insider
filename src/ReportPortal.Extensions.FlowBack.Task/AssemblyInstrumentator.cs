@@ -44,12 +44,13 @@ namespace ReportPortal.Extensions.FlowBack.Task
                     {
                         foreach (var method in type.Methods)
                         {
-                            //if (true)
-                            if (method.HasCustomAttributes && method.HasBody)
+                            if (true && method.HasBody)
+                            //if (method.HasCustomAttributes && method.HasBody)
                             {
-                                var flowBackAttribute = method.CustomAttributes.FirstOrDefault(ca => ca.AttributeType.FullName == typeof(FlowBackAttribute).FullName);
+                                var flowBackAttribute = method.CustomAttributes?.FirstOrDefault(ca => ca.AttributeType.FullName == typeof(FlowBackAttribute).FullName);
 
-                                if (flowBackAttribute != null)
+                                if (true)
+                                //if (flowBackAttribute != null)
                                 {
                                     var processor = method.Body.GetILProcessor();
 
@@ -100,6 +101,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                             retValueDef = new VariableDefinition(method.ReturnType);
                                             processor.Body.Variables.Add(retValueDef);
                                             lastLdlocInstruction = processor.Create(OpCodes.Ldloc, retValueDef);
+
                                             processor.Append(lastLdlocInstruction);
                                         }
                                         else
@@ -188,12 +190,24 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                             {
                                                 if (retValueDef != null)
                                                 {
-                                                    processor.InsertBefore(inst, processor.Create(OpCodes.Stloc, retValueDef));
-                                                    lastIndex++;
-                                                }
+                                                    inst.OpCode = OpCodes.Stloc;
+                                                    inst.Operand = retValueDef;
 
-                                                inst.OpCode = OpCodes.Leave;
-                                                inst.Operand = finalLeave;
+                                                    processor.InsertAfter(inst, processor.Create(OpCodes.Leave, finalLeave));
+
+                                                    lastIndex++;
+
+                                                    //processor.InsertBefore(inst, processor.Create(OpCodes.Stloc, retValueDef));
+                                                    //inst.OpCode = OpCodes.Stloc;
+                                                    //inst.Operand = retValueDef;
+
+                                                    //lastIndex++;
+                                                }
+                                                else
+                                                {
+                                                    inst.OpCode = OpCodes.Leave;
+                                                    inst.Operand = finalLeave;
+                                                }
                                             }
                                         }
 

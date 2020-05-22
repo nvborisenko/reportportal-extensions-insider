@@ -86,5 +86,30 @@ namespace ReportPortal.Extensions.FlowBack.Test
         {
             Assert.ThrowsAsync<Exception>(() => _simpleClass.SimpleAsyncThrowsMethod());
         }
+
+        [Test]
+        public void SomeGenericMethod()
+        {
+            var a = _simpleClass.SomeGenericMethod<DateTime>();
+            Assert.AreEqual(default(DateTime), a);
+        }
+
+        [Test]
+        public void SomeInterfaceMethod()
+        {
+            var l = _simpleClass.SomeList();
+        }
+
+        [Test]
+        public void ReturnSomeField()
+        {
+            var o = _simpleClass.ReturnSomeField();
+        }
+
+        [Test]
+        public void ReturnSomeProperty()
+        {
+            var o = _simpleClass.AllowedDecompressionMethods;
+        }
     }
 }

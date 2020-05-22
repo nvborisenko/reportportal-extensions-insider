@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace ReportPortal.Extensions.FlowBack.Test.Internal
@@ -154,6 +158,35 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
         public void IggnoredMethof()
         {
 
+        }
+
+        public T SomeGenericMethod<T>()
+        {
+            return default(T);
+        }
+
+        readonly IList<DecompressionMethods> _allowedDecompressionMethods;
+
+        public IList<DecompressionMethods> AllowedDecompressionMethods => _allowedDecompressionMethods.Any()
+            ? _allowedDecompressionMethods
+            : new[] { DecompressionMethods.None, DecompressionMethods.Deflate, DecompressionMethods.GZip };
+
+        public IList<DateTime> SomeList()
+        {
+            return new List<DateTime>();
+        }
+
+        private object _obj = new object();
+        public object ReturnSomeField()
+        {
+            if (_obj != null)
+            {
+                return _obj;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
