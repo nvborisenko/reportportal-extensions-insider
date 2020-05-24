@@ -196,12 +196,6 @@ namespace ReportPortal.Extensions.FlowBack.Task
                                                     processor.InsertAfter(inst, processor.Create(OpCodes.Leave, finalLeave));
 
                                                     lastIndex++;
-
-                                                    //processor.InsertBefore(inst, processor.Create(OpCodes.Stloc, retValueDef));
-                                                    //inst.OpCode = OpCodes.Stloc;
-                                                    //inst.Operand = retValueDef;
-
-                                                    //lastIndex++;
                                                 }
                                                 else
                                                 {

@@ -165,7 +165,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             return default(T);
         }
 
-        readonly IList<DecompressionMethods> _allowedDecompressionMethods;
+        readonly IList<DecompressionMethods> _allowedDecompressionMethods = new List<DecompressionMethods>();
 
         public IList<DecompressionMethods> AllowedDecompressionMethods => _allowedDecompressionMethods.Any()
             ? _allowedDecompressionMethods
