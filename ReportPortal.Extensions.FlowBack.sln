@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Flo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{017C3467-08D9-46A0-9584-1ECF91B5688A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportPortal.Extensions.FlowBack.Test", "test\ReportPortal.Extensions.FlowBack.Test\ReportPortal.Extensions.FlowBack.Test.csproj", "{F9769B84-9E46-434E-82B9-256E7FAD1F15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.FlowBack.Test", "test\ReportPortal.Extensions.FlowBack.Test\ReportPortal.Extensions.FlowBack.Test.csproj", "{F9769B84-9E46-434E-82B9-256E7FAD1F15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportPortal.Extensions.FlowBack.Test.Internal", "test\ReportPortal.Extensions.FlowBack.Test.Internal\ReportPortal.Extensions.FlowBack.Test.Internal.csproj", "{0C2C2AB8-0323-44BF-BB03-691F9B85BB93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.FlowBack.Test.Internal", "test\ReportPortal.Extensions.FlowBack.Test.Internal\ReportPortal.Extensions.FlowBack.Test.Internal.csproj", "{0C2C2AB8-0323-44BF-BB03-691F9B85BB93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
