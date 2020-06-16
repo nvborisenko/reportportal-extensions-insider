@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net472;</TargetFrameworks>
     <Version>1.0.0</Version>
 
     <PackageId>ReportPortal.Extensions.FlowBack</PackageId>
@@ -40,9 +40,9 @@
 
   <Target Name="CopyFlowBackOutputTask" AfterTargets="Build">
     <ItemGroup>
-      <None Include="$(OutputPath)ReportPortal.Extensions.FlowBack.Core.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-
-
+      <None Include="$(OutputPath)netstandard2.0\ReportPortal.Extensions.FlowBack.Core.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+      <None Include="$(OutputPath)net472\ReportPortal.Extensions.FlowBack.Core.dll" Pack="true" PackagePath="lib\net472" />
+      
       <None Include="$(OutputPath)" Pack="true" PackagePath="tasks\" />
     </ItemGroup>
   </Target>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net472;</TargetFrameworks>
     <Version>1.0.0</Version>
     <AssemblyName>ReportPortal.Extensions.FlowBack.Core</AssemblyName>
     <IsPackable>false</IsPackable>

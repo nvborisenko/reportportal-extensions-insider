@@ -56,7 +56,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
 
                                     var isIgnored = false;
 
-                                    var flowBackLogicalName = method.ReturnType.Name + " " + type.Name + "." + method.Name;
+                                    var flowBackLogicalName = $"Calling {type.Name}.**{method.Name}** which returns *{method.ReturnType.Name}*";
                                     if (flowBackAttribute != null)
                                     {
                                         var flowBackAttributeNameFromCtor = flowBackAttribute.ConstructorArguments.FirstOrDefault(a => a.Type == module.TypeSystem.String).Value;

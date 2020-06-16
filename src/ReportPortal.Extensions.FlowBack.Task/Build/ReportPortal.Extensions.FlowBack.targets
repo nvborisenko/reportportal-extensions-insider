@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <_FlowBackRuntime Condition=" $(MSBuildRuntimeType) == 'Full' ">net472</_FlowBackRuntime>
+    <_FlowBackRuntime Condition=" $(MSBuildRuntimeType) == 'Core' ">netstandard2.0</_FlowBackRuntime>
+  </PropertyGroup>
+  
+  <UsingTask TaskName="ReportPortal.Extensions.FlowBack.Task.FlowBackTask" AssemblyFile="$(MSBuildThisFileDirectory)..\tasks\$(_FlowBackRuntime)\ReportPortal.Extensions.FlowBack.Task.dll" />
+
+  <Target Name="FlowBackInstrumentalTask" AfterTargets="Build">
+    <FlowBackTask TargetAssemblyPath="$(TargetPath)" />
+  </Target>
+
+</Project>
