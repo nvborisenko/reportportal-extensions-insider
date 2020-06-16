@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ReportPortal.Extensions.FlowBack.Task\ReportPortal.Extensions.FlowBack.Task.csproj" />
-    <ProjectReference Include="..\ReportPortal.Extensions.FlowBack.Test.Internal\ReportPortal.Extensions.FlowBack.Test.Internal.csproj" />
+    <ProjectReference Include="..\..\src\ReportPortal.Extensions.Insider.Task\ReportPortal.Extensions.Insider.Task.csproj" />
+    <ProjectReference Include="..\ReportPortal.Extensions.Insider.Test.Internal\ReportPortal.Extensions.Insider.Test.Internal.csproj" />
   </ItemGroup>
 
 </Project>

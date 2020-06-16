@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace ReportPortal.Extensions.FlowBack
+namespace ReportPortal.Extensions.Insider
 {
-    public class FlowBackAttribute : Attribute
+    public class InsiderAttribute : Attribute
     {
-        public FlowBackAttribute()
+        public InsiderAttribute()
         {
 
         }
 
-        public FlowBackAttribute(string name)
+        public InsiderAttribute(string name)
         {
             Name = name;
         }

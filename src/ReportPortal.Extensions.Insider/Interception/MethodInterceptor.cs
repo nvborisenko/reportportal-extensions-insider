@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReportPortal.Extensions.FlowBack.Interception
+namespace ReportPortal.Extensions.Insider.Interception
 {
     public class MethodInterceptor : IInterceptor
     {

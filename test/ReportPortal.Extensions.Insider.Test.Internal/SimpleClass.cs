@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace ReportPortal.Extensions.FlowBack.Test.Internal
+namespace ReportPortal.Extensions.Insider.Test.Internal
 {
     public class SimpleClass
     {
@@ -22,13 +22,13 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             }
         }
 
-        [FlowBack]
+        [Insider]
         public void SimpleEmptyMethod()
         {
 
         }
 
-        [FlowBack(Name = null)]
+        [Insider(Name = null)]
         public void SimpleMethod()
         {
             var a = DateTime.Now;
@@ -36,7 +36,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
 
         }
 
-        [FlowBack("a")]
+        [Insider("a")]
         public int SimpleReturnValueMethod()
         {
             var a = 2;
@@ -44,7 +44,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             return a + b;
         }
 
-        [FlowBack("q")]
+        [Insider("q")]
         public int Sum(int a, int b)
         {
             var isNull = (object)string.IsNullOrEmpty(null);
@@ -59,13 +59,13 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             return res2;
         }
 
-        [FlowBack("a")]
+        [Insider("a")]
         public Type SimpleReturnRefMethod()
         {
             return typeof(SimpleClass);
         }
 
-        [FlowBack("asd")]
+        [Insider("asd")]
         public void ThrowsExceptionMethod()
         {
             for (int i = 0; i < 5; i++)
@@ -81,7 +81,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             throw new Exception("asd");
         }
 
-        [FlowBack("asd")]
+        [Insider("asd")]
         public int WithTryCatchBlockMethod()
         {
             try
@@ -106,7 +106,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             }
         }
 
-        [FlowBack(null)]
+        [Insider(null)]
         public async Task SimpleAsyncMethod()
         {
             await Task.Delay(0);
@@ -123,14 +123,14 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             return a + b;
         }
 
-        [FlowBack("a")]
+        [Insider("a")]
         public async Task<int> SimpleAsyncRetValueMethod()
         {
             await Task.Delay(1);
             return 6;
         }
 
-        [FlowBack("a")]
+        [Insider("a")]
         public async Task SimpleAsyncThrowsMethod()
         {
             await Task.Delay(0);
@@ -143,7 +143,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
 
         }
 
-        [FlowBack("a")]
+        [Insider("a")]
         public async Task SimpleAsyncMethodWithTryCatch()
         {
             try
@@ -154,7 +154,7 @@ namespace ReportPortal.Extensions.FlowBack.Test.Internal
             { }
         }
 
-        [FlowBack(Ignore = true)]
+        [Insider(Ignore = true)]
         public void IggnoredMethof()
         {
 

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReportPortal.Extensions.FlowBack.Task
+namespace ReportPortal.Extensions.Insider.Task
 {
-    public class FlowBackTask : Microsoft.Build.Utilities.Task
+    public class InsiderTask : Microsoft.Build.Utilities.Task
     {
         public override bool Execute()
         {

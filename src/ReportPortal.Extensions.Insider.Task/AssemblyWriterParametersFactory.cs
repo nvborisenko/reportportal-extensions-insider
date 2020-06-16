@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace ReportPortal.Extensions.FlowBack.Task
+namespace ReportPortal.Extensions.Insider.Task
 {
     class AssemblyWriterParametersFactory
     {

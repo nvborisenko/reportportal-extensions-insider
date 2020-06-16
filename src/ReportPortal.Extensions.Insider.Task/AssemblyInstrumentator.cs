@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ReportPortal.Extensions.FlowBack.Task
+namespace ReportPortal.Extensions.Insider.Task
 {
     public class AssemblyInstrumentator
     {
@@ -47,7 +47,7 @@ namespace ReportPortal.Extensions.FlowBack.Task
                             if (true && method.HasBody)
                             //if (method.HasCustomAttributes && method.HasBody)
                             {
-                                var flowBackAttribute = method.CustomAttributes?.FirstOrDefault(ca => ca.AttributeType.FullName == typeof(FlowBackAttribute).FullName);
+                                var flowBackAttribute = method.CustomAttributes?.FirstOrDefault(ca => ca.AttributeType.FullName == typeof(InsiderAttribute).FullName);
 
                                 if (true)
                                 //if (flowBackAttribute != null)

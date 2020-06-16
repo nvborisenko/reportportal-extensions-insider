@@ -6,9 +6,9 @@
     <_FlowBackRuntime Condition=" $(MSBuildRuntimeType) == 'Core' ">netstandard2.0</_FlowBackRuntime>
   </PropertyGroup>
   
-  <UsingTask TaskName="ReportPortal.Extensions.FlowBack.Task.FlowBackTask" AssemblyFile="$(MSBuildThisFileDirectory)..\tasks\$(_FlowBackRuntime)\ReportPortal.Extensions.FlowBack.Task.dll" />
+  <UsingTask TaskName="ReportPortal.Extensions.Insider.Task.InsiderTask" AssemblyFile="$(MSBuildThisFileDirectory)..\tasks\$(_FlowBackRuntime)\ReportPortal.Extensions.Insider.Task.dll" />
 
-  <Target Name="FlowBackInstrumentalTask" AfterTargets="Build">
+  <Target Name="InsiderInstrumentalTask" AfterTargets="Build">
     <FlowBackTask TargetAssemblyPath="$(TargetPath)" />
   </Target>
 

@@ -5,15 +5,15 @@ VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8D7BBB95-7B19-4CF9-BCFB-A968C18C1806}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.FlowBack", "src\ReportPortal.Extensions.FlowBack\ReportPortal.Extensions.FlowBack.csproj", "{8B1B17CF-ACB2-42BC-B0B5-A2864D05B8E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider", "src\ReportPortal.Extensions.Insider\ReportPortal.Extensions.Insider.csproj", "{8B1B17CF-ACB2-42BC-B0B5-A2864D05B8E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.FlowBack.Task", "src\ReportPortal.Extensions.FlowBack.Task\ReportPortal.Extensions.FlowBack.Task.csproj", "{919238C6-D099-4EAA-B7D1-A741D8870766}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider.Task", "src\ReportPortal.Extensions.Insider.Task\ReportPortal.Extensions.Insider.Task.csproj", "{919238C6-D099-4EAA-B7D1-A741D8870766}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{017C3467-08D9-46A0-9584-1ECF91B5688A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.FlowBack.Test", "test\ReportPortal.Extensions.FlowBack.Test\ReportPortal.Extensions.FlowBack.Test.csproj", "{F9769B84-9E46-434E-82B9-256E7FAD1F15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider.Test", "test\ReportPortal.Extensions.Insider.Test\ReportPortal.Extensions.Insider.Test.csproj", "{F9769B84-9E46-434E-82B9-256E7FAD1F15}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.FlowBack.Test.Internal", "test\ReportPortal.Extensions.FlowBack.Test.Internal\ReportPortal.Extensions.FlowBack.Test.Internal.csproj", "{0C2C2AB8-0323-44BF-BB03-691F9B85BB93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider.Test.Internal", "test\ReportPortal.Extensions.Insider.Test.Internal\ReportPortal.Extensions.Insider.Test.Internal.csproj", "{0C2C2AB8-0323-44BF-BB03-691F9B85BB93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

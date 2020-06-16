@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 
-namespace ReportPortal.Extensions.FlowBack.Test
+namespace ReportPortal.Extensions.Insider.Test
 {
     public class SimpleClass
     {
