@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text;
 
 namespace ReportPortal.Extensions.Insider.Interception
 {
     public interface IInterceptor
     {
-        void OnBefore(string name);
+        void OnBefore(string name, IOrderedDictionary parameters);
 
         void OnException(Exception exp);
 

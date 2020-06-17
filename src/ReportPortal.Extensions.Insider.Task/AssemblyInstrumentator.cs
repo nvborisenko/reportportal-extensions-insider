@@ -3,6 +3,7 @@ using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 
@@ -134,6 +135,33 @@ namespace ReportPortal.Extensions.Insider.Task
                                         // rp_intercepter.OnBefore();
                                         beforeInstructions.Add(processor.Create(OpCodes.Ldloc, varDef));
                                         beforeInstructions.Add(processor.Create(OpCodes.Ldstr, flowBackLogicalName));
+                                        // array of method arguments
+                                        if (method.HasParameters)
+                                        {
+                                            var methodParamsVarDefinition = new VariableDefinition(method.Module.ImportReference(typeof(OrderedDictionary)));
+                                            method.Body.Variables.Add(methodParamsVarDefinition);
+                                            beforeInstructions.Add(processor.Create(OpCodes.Newobj, method.Module.ImportReference(typeof(OrderedDictionary).GetConstructor(new Type[] { }))));
+                                            beforeInstructions.Add(processor.Create(OpCodes.Stloc, methodParamsVarDefinition));
+
+                                            foreach (var methodParam in method.Parameters)
+                                            {
+                                                beforeInstructions.Add(processor.Create(OpCodes.Ldloc, methodParamsVarDefinition));
+                                                beforeInstructions.Add(processor.Create(OpCodes.Ldstr, methodParam.Name));
+                                                beforeInstructions.Add(processor.Create(OpCodes.Ldarg, methodParam));
+                                                if (methodParam.ParameterType.IsValueType)
+                                                {
+                                                    beforeInstructions.Add(processor.Create(OpCodes.Box, methodParam.ParameterType));
+                                                }
+                                                beforeInstructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(OrderedDictionary).GetProperty("Item", new Type[] { typeof(object) }).SetMethod)));
+                                            }
+
+                                            beforeInstructions.Add(processor.Create(OpCodes.Ldloc, methodParamsVarDefinition));
+                                        }
+                                        else
+                                        {
+                                            beforeInstructions.Add(processor.Create(OpCodes.Ldnull));
+                                        }
+
                                         beforeInstructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(Interception.IInterceptor).GetMethod("OnBefore"))));
 
                                         beforeInstructions.Reverse();
@@ -170,8 +198,8 @@ namespace ReportPortal.Extensions.Insider.Task
                                             if (retValueDef.VariableType.IsValueType)
                                             {
                                                 finallyInstructions.Add(processor.Create(OpCodes.Box, retValueDef.VariableType));
-                                                finallyInstructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(Interception.IInterceptor).GetMethod(nameof(Interception.IInterceptor.OnAfter), new Type[] { typeof(object) }))));
                                             }
+                                            finallyInstructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(Interception.IInterceptor).GetMethod(nameof(Interception.IInterceptor.OnAfter), new Type[] { typeof(object) }))));
                                         }
                                         else
                                         {

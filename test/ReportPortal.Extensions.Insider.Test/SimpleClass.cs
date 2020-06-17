@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using ReportPortal.Extensions.Insider.Test.Internal;
 using System;
 using System.Threading.Tasks;
 
@@ -18,6 +19,19 @@ namespace ReportPortal.Extensions.Insider.Test
         public void SimpleMethod()
         {
             _simpleClass.SimpleMethod();
+        }
+
+        [Test]
+        public void SimpleMethodWithParams()
+        {
+            _simpleClass.SimpleMethodWithParams("qwe", 2, null);
+        }
+
+        [Test]
+        public void SimpleExtensionMethod()
+        {
+            var str = _simpleClass.ToAnyStr();
+            Assert.AreEqual("AnyString", str);
         }
 
         [Test]

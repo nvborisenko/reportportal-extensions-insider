@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -22,6 +24,8 @@ namespace ReportPortal.Extensions.Insider.Test.Internal
             }
         }
 
+        public SimpleClass() { }
+
         [Insider]
         public void SimpleEmptyMethod()
         {
@@ -37,7 +41,11 @@ namespace ReportPortal.Extensions.Insider.Test.Internal
 
         public void SimpleMethodWithParams(string a, int b, object c)
         {
-            var arr = new object[] { a, b, c };
+            var aaa = new OrderedDictionary();
+
+            aaa["a"] = a;
+            aaa["b"] = b;
+            //var arr = new object[] { a, b, c };
         }
 
         [Insider("a")]

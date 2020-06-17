@@ -2,6 +2,7 @@
 using ReportPortal.Shared.Logging;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text;
 
 namespace ReportPortal.Extensions.Insider.Interception
@@ -16,9 +17,17 @@ namespace ReportPortal.Extensions.Insider.Interception
             //Console.WriteLine($"Hi from .ctor: {_parentScope.Id}");
         }
 
-        public void OnBefore(string name)
+        public void OnBefore(string name, IOrderedDictionary parameters)
         {
             _scope = _parentScope.BeginScope(name);
+
+            if (parameters != null)
+            {
+                foreach (var argName in parameters.Keys)
+                {
+                    _scope.Trace($"{argName} `{parameters[argName]}`");
+                }
+            }
 
             //Console.WriteLine($"Hi from .OnBefore: {_scope.Id} " + name);
         }
@@ -33,7 +42,7 @@ namespace ReportPortal.Extensions.Insider.Interception
         public void OnAfter(object result)
         {
             string ret = result == null ? "null" : result.ToString();
-            var message = $"Result: `{ret}`";
+            var message = $"Returning `{ret}`";
             _scope.Trace(message);
 
             //Console.WriteLine($"Hi from .OnAfter {_scope.Id}: Message: {message}");
