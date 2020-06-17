@@ -11,5 +11,7 @@ namespace ReportPortal.Extensions.Insider.Interception
         void OnException(Exception exp);
 
         void OnAfter(object result);
+
+        void OnAfter();
     }
 }

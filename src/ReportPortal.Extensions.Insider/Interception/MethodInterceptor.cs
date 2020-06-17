@@ -26,6 +26,7 @@ namespace ReportPortal.Extensions.Insider.Interception
         public void OnException(Exception exp)
         {
             _scope.Warn(exp.ToString());
+
             //Console.WriteLine($"Hi from .OnException: {_scope.Id} " + exp.Message);
         }
 
@@ -37,6 +38,11 @@ namespace ReportPortal.Extensions.Insider.Interception
 
             //Console.WriteLine($"Hi from .OnAfter {_scope.Id}: Message: {message}");
 
+            _scope.Dispose();
+        }
+
+        public void OnAfter()
+        {
             _scope.Dispose();
         }
     }

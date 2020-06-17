@@ -33,7 +33,11 @@ namespace ReportPortal.Extensions.Insider.Test.Internal
         {
             var a = DateTime.Now;
             var b = a.AddDays(5);
+        }
 
+        public void SimpleMethodWithParams(string a, int b, object c)
+        {
+            var arr = new object[] { a, b, c };
         }
 
         [Insider("a")]

@@ -38,7 +38,7 @@
     <ProjectReference Include="..\ReportPortal.Extensions.Insider\ReportPortal.Extensions.Insider.csproj" PrivateAssets="All" />
   </ItemGroup>
 
-  <Target Name="CopyFlowBackOutputTask" AfterTargets="Build">
+  <Target Name="CopyInsiderOutputTask" AfterTargets="Build">
     <ItemGroup>
       <None Include="$(OutputPath)netstandard2.0\ReportPortal.Extensions.Insider.Core.dll" Pack="true" PackagePath="lib\netstandard2.0" />
       <None Include="$(OutputPath)net472\ReportPortal.Extensions.Insider.Core.dll" Pack="true" PackagePath="lib\net472" />

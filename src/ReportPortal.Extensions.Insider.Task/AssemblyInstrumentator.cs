@@ -56,7 +56,15 @@ namespace ReportPortal.Extensions.Insider.Task
 
                                     var isIgnored = false;
 
-                                    var flowBackLogicalName = $"Calling {type.Name}.**{method.Name}** which returns *{method.ReturnType.Name}*";
+                                    string flowBackLogicalName;
+                                    if (method.ReturnType == module.TypeSystem.Void)
+                                    {
+                                        flowBackLogicalName = $"Calling {type.Name}.**{method.Name}**";
+                                    }
+                                    else
+                                    {
+                                        flowBackLogicalName = $"Calling {type.Name}.**{method.Name}** and return *{method.ReturnType.Name}*";
+                                    }
                                     if (flowBackAttribute != null)
                                     {
                                         var flowBackAttributeNameFromCtor = flowBackAttribute.ConstructorArguments.FirstOrDefault(a => a.Type == module.TypeSystem.String).Value;
@@ -162,13 +170,15 @@ namespace ReportPortal.Extensions.Insider.Task
                                             if (retValueDef.VariableType.IsValueType)
                                             {
                                                 finallyInstructions.Add(processor.Create(OpCodes.Box, retValueDef.VariableType));
+                                                finallyInstructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(Interception.IInterceptor).GetMethod(nameof(Interception.IInterceptor.OnAfter), new Type[] { typeof(object) }))));
                                             }
                                         }
                                         else
                                         {
-                                            finallyInstructions.Add(processor.Create(OpCodes.Ldnull));
+                                            //finallyInstructions.Add(processor.Create(OpCodes.Ldnull));
+                                            finallyInstructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(Interception.IInterceptor).GetMethod(nameof(Interception.IInterceptor.OnAfter), new Type[] { }))));
                                         }
-                                        finallyInstructions.Add(processor.Create(OpCodes.Callvirt, method.Module.ImportReference(typeof(Interception.IInterceptor).GetMethod(nameof(Interception.IInterceptor.OnAfter)))));
+
 
                                         finallyInstructions.Add(processor.Create(OpCodes.Endfinally));
 
