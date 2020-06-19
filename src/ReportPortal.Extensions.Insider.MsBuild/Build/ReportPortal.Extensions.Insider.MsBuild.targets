@@ -6,7 +6,7 @@
     <_InsiderRuntime Condition=" $(MSBuildRuntimeType) == 'Core' ">netstandard2.0</_InsiderRuntime>
   </PropertyGroup>
   
-  <UsingTask TaskName="ReportPortal.Extensions.Insider.Task.InsiderTask" AssemblyFile="$(MSBuildThisFileDirectory)..\tasks\$(_InsiderRuntime)\ReportPortal.Extensions.Insider.Task.dll" />
+  <UsingTask TaskName="ReportPortal.Extensions.Insider.MsBuild.InsiderTask" AssemblyFile="$(MSBuildThisFileDirectory)..\task\$(_InsiderRuntime)\ReportPortal.Extensions.Insider.MsBuild.dll" />
 
   <Target Name="InsiderInstrumentalTask" AfterTargets="Build">
     <InsiderTask TargetAssemblyPath="$(TargetPath)" />
