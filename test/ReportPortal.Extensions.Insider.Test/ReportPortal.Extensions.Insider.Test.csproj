@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ReportPortal.Extensions.Insider.Task\ReportPortal.Extensions.Insider.Tool.csproj" />
+    <ProjectReference Include="..\..\src\ReportPortal.Extensions.Insider.Sdk\ReportPortal.Extensions.Insider.Sdk.csproj" />
     <ProjectReference Include="..\ReportPortal.Extensions.Insider.Test.Internal.NetStandard\ReportPortal.Extensions.Insider.Test.Internal.NetStandard.csproj" />
   </ItemGroup>
 
