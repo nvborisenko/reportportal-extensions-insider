@@ -13,7 +13,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ReportPortal.Extensions.Insider.Sdk\ReportPortal.Extensions.Insider.Sdk.csproj" PrivateAssets="All" />
-    <ProjectReference Include="..\ReportPortal.Extensions.Insider\ReportPortal.Extensions.Insider.csproj" />
+    <ProjectReference Include="..\ReportPortal.Extensions.Insider\ReportPortal.Extensions.Insider.csproj">
+      <PrivateAssets>contentfiles; analyzers;</PrivateAssets>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>

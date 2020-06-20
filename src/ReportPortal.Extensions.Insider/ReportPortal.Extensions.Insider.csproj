@@ -11,4 +11,8 @@
     <PackageReference Include="ReportPortal.Shared" Version="3.0.0-beta.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Build\**" Pack="true" PackagePath="build" />
+  </ItemGroup>
+
 </Project>
