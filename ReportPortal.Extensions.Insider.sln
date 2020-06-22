@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Ins
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider.Test.Internal.NetStandard", "test\ReportPortal.Extensions.Insider.Test.Internal.NetStandard\ReportPortal.Extensions.Insider.Test.Internal.NetStandard.csproj", "{695FED46-DEC7-40AA-9DB6-299ED1931612}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider.MsBuild", "src\ReportPortal.Extensions.Insider.MsBuild\ReportPortal.Extensions.Insider.MsBuild.csproj", "{104806F3-FB2C-47DD-978A-FDF60AD8AF2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider.Sdk", "src\ReportPortal.Extensions.Insider.Sdk\ReportPortal.Extensions.Insider.Sdk.csproj", "{104806F3-FB2C-47DD-978A-FDF60AD8AF2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider.Sdk", "src\ReportPortal.Extensions.Insider.Sdk\ReportPortal.Extensions.Insider.Sdk.csproj", "{244FFE18-FEF0-4810-B927-687E6AE1B360}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal.Extensions.Insider.Core", "src\ReportPortal.Extensions.Insider.Core\ReportPortal.Extensions.Insider.Core.csproj", "{244FFE18-FEF0-4810-B927-687E6AE1B360}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

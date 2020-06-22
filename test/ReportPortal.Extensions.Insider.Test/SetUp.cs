@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
+using ReportPortal.Extensions.Insider.Core.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,22 +14,24 @@ namespace ReportPortal.Extensions.Insider.Test
         [OneTimeSetUp]
         public static void SetUpMethod()
         {
+            var logger = new Mock<IInstrumentationLogger>();
+
             var assemblyToInstrument = TestContext.CurrentContext.TestDirectory + "/ReportPortal.Extensions.Insider.Test.Internal.NetStandard.dll";
 
-            var instrumentator = new Sdk.Instrumentation.AssemblyInstrumentator(assemblyToInstrument);
+            var instrumentator = new Core.AssemblyInstrumentator(logger.Object);
 
-            instrumentator.Instrument();
+            instrumentator.Instrument(assemblyToInstrument);
 
             var filePath = TestContext.CurrentContext.TestDirectory + "/ReportPortal.Extensions.Insider.Test.Internal.NetCoreApp.dll";
             if (File.Exists(filePath))
             {
                 var assemblyToAppCoreInstrument = filePath;
-                var instrumentator2 = new Sdk.Instrumentation.AssemblyInstrumentator(assemblyToAppCoreInstrument);
+                var instrumentator2 = new Core.AssemblyInstrumentator(logger.Object);
 
-                instrumentator2.Instrument();
+                instrumentator2.Instrument(assemblyToAppCoreInstrument);
             }
 
-            
+
         }
     }
 }

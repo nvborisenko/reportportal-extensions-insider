@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace ReportPortal.Extensions.Insider.Sdk.Instrumentation
+namespace ReportPortal.Extensions.Insider.Core
 {
     class AssemblyWriterParametersFactory
     {
