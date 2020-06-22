@@ -2,7 +2,17 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
+    <Version>1.0.0</Version>
 
+    <Description>Introduce tests execution logging without coding</Description>
+    <Authors>Nikolay Borisenko</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/nvborisenko/reportportal-extensions-insider</PackageProjectUrl>
+    <PackageIcon>Logo.png</PackageIcon>
+    <RepositoryType>GitHub</RepositoryType>
+    <RepositoryUrl>https://github.com/nvborisenko/reportportal-extensions-insider</RepositoryUrl>
+    <PackageTags>report reportportal testing aop instrument log</PackageTags>
+        
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
@@ -20,6 +30,7 @@
 
   <ItemGroup>
     <None Include="Build\**" Pack="true" PackagePath="build" />
+    <None Include="..\..\Logo.png" Pack="true" PackagePath="\" Visible="false" />
   </ItemGroup>
   
   <Target Name="IncludeOutput" AfterTargets="Build">
