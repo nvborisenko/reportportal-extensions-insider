@@ -43,8 +43,8 @@ namespace ReportPortal.Extensions.Insider.Core
                     {
                         var flowBackAttribute = method.CustomAttributes?.FirstOrDefault(ca => ca.AttributeType.FullName == typeof(InsiderAttribute).FullName);
 
-                        if (true)
-                        //if (flowBackAttribute != null)
+                        //if (true)
+                        if (flowBackAttribute != null)
                         {
                             var processor = method.Body.GetILProcessor();
 
