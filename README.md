@@ -3,7 +3,7 @@ Aim of this experimental project is to provide a way for adding more structured 
 
 # How to use
 
-Install `ReportPortal.Extensions.Insider.Sdk` nuget package and add **[Insider]** attribute for method which you want to see in the report.
+Install `ReportPortal.Extensions.Insider.Sdk` nuget package and add `[Insider]` attribute for method which you want to see in the report.
 
 ```csharp
 using ReportPortal.Extensions.Insider;
@@ -21,7 +21,7 @@ Each time when this method is called by tests you will see ![Report](docs/images
 
 
 Or define more meanful operational name.
-```cshar
+```csharp
 [Insider("Adding two numbers")]
 ```
 
