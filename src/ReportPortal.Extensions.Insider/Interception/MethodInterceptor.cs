@@ -1,8 +1,6 @@
 ﻿using ReportPortal.Shared;
-using ReportPortal.Shared.Logging;
+using ReportPortal.Shared.Execution.Logging;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ReportPortal.Extensions.Insider.Interception
 {
