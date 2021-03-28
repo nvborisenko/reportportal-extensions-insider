@@ -10,8 +10,7 @@ namespace ReportPortal.Extensions.Insider.Interception
         private ILogScope _scope;
         public MethodInterceptor()
         {
-            _parentScope = Log.ActiveScope;
-            //Console.WriteLine($"Hi from .ctor: {_parentScope.Id}");
+            _parentScope = Context.Current.Log;
         }
 
         public void OnBefore(string name, ParamInfo[] parameters)
@@ -25,15 +24,11 @@ namespace ReportPortal.Extensions.Insider.Interception
                     _scope.Trace($"{paramInfo.Name} `{paramInfo.Value}`");
                 }
             }
-
-            //Console.WriteLine($"Hi from .OnBefore: {_scope.Id} " + name);
         }
 
         public void OnException(Exception exp)
         {
             _scope.Warn(exp.ToString());
-
-            //Console.WriteLine($"Hi from .OnException: {_scope.Id} " + exp.Message);
         }
 
         public void OnAfter(object result)
@@ -41,8 +36,6 @@ namespace ReportPortal.Extensions.Insider.Interception
             string ret = result == null ? "null" : result.ToString();
             var message = $"Returning `{ret}`";
             _scope.Trace(message);
-
-            //Console.WriteLine($"Hi from .OnAfter {_scope.Id}: Message: {message}");
 
             _scope.Dispose();
         }
