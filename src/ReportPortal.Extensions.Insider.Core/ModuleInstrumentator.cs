@@ -19,8 +19,12 @@ namespace ReportPortal.Extensions.Insider.Core
 
         public void Instrument(ModuleDefinition module)
         {
-            var typeSystemResolver = new TypeSystemResolver(_logger);
-            var exceptionType = typeSystemResolver.Resolve(module, "System", "Exception");
+            //var typeSystemResolver = new TypeSystemResolver(_logger);
+            //var exceptionType = typeSystemResolver.Resolve(module, "System", "Exception");
+
+            var exceptionType = new TypeReference("System", "Exception", module.TypeSystem.Object.Module, module.TypeSystem.Object.Scope);
+
+            module.ImportReference(exceptionType);
 
             var allTypes = new List<TypeDefinition>();
 
@@ -43,14 +47,15 @@ namespace ReportPortal.Extensions.Insider.Core
                     {
                         var flowBackAttribute = method.CustomAttributes?.FirstOrDefault(ca => ca.AttributeType.FullName == typeof(InsiderAttribute).FullName);
 
-                        //if (true)
-                        if (flowBackAttribute != null)
+                        if (true)
+                        //if (flowBackAttribute != null)
                         {
                             var processor = method.Body.GetILProcessor();
 
                             var isIgnored = false;
 
                             string flowBackLogicalName;
+
                             if (method.ReturnType == module.TypeSystem.Void)
                             {
                                 flowBackLogicalName = $"Calling {type.Name}.**{method.Name}**";
@@ -177,6 +182,7 @@ namespace ReportPortal.Extensions.Insider.Core
 
                                 // inner try
                                 var handlerInstructions = new List<Instruction>();
+
                                 // Exception exp
                                 var expVar = new VariableDefinition(exceptionType);
                                 method.Body.Variables.Add(expVar);

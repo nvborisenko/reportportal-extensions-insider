@@ -26,6 +26,7 @@ namespace ReportPortal.Extensions.Insider.Core
                 }
 
                 var writerParameters = new AssemblyWriterParametersFactory().CreateWriterParameters(assemblyPath);
+                
                 assemblyDef.Write(writerParameters);
             }
         }
