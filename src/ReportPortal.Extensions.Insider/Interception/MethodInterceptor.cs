@@ -21,7 +21,27 @@ namespace ReportPortal.Extensions.Insider.Interception
             {
                 foreach (var paramInfo in parameters)
                 {
-                    _scope.Trace($"{paramInfo.Name} `{paramInfo.Value}`");
+                    string paramName = paramInfo.Name;
+                    string paramValue = null;
+
+                    try
+                    {
+                        if (paramInfo.Value == null)
+                        {
+                            paramValue = "null";
+                        }
+                        else
+                        {
+                            paramValue = paramInfo.Value.ToString();
+                        }
+                    }
+                    catch(Exception)
+                    {
+                        // fallback
+                        paramValue = paramInfo.Value.GetType().FullName;
+                    }
+
+                    _scope.Trace($"{paramName} `{paramValue}`");
                 }
             }
         }
