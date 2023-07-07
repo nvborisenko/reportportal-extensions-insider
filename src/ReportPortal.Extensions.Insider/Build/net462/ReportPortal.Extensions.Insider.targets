@@ -3,7 +3,7 @@
 
   <PropertyGroup>
 
-    <_ReportPortal_Insider_Runtime_Path>$(MSBuildThisFileDirectory)..\..\lib\net45\ReportPortal.Extensions.Insider.dll</_ReportPortal_Insider_Runtime_Path>
+    <_ReportPortal_Insider_Runtime_Path>$(MSBuildThisFileDirectory)..\..\lib\net462\ReportPortal.Extensions.Insider.dll</_ReportPortal_Insider_Runtime_Path>
 
   </PropertyGroup>
 
