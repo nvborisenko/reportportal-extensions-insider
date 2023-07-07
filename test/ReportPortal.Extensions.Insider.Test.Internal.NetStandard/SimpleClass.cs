@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using ReportPortal.Shared;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -124,7 +122,7 @@ namespace ReportPortal.Extensions.Insider.Test.Internal
 
         public async Task<int> SimpleSumAsyncMethod(int a, int b, Type type)
         {
-            using (var scope = Shared.Log.BeginScope("qwe"))
+            using (var scope = Context.Current.Log.BeginScope("qwe"))
             {
 
             }
